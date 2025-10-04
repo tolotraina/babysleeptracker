@@ -9,5 +9,22 @@ export const sleepApi = {
         }
         const responsejson = await response.json();
         return responsejson.data;
-    }
+    },
+    addEntry: async (entry: Omit<SleepEntry, 'id'>): Promise<SleepEntry> => {
+        const api_url = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+        const response = await fetch(`${api_url}/sleep-entries`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(entry),
+        });
+        if (!response.ok) {
+            throw new Error('Failed to add sleep entry');
+        }
+        // return response
+        const responsejson = await response.json();
+        // console.log("API addEntry response:", responsejson);
+        return responsejson.data;
+    },
 };

@@ -13,7 +13,7 @@
     @apply text-4xl font-black text-primary;
   }
   h2 {
-    @apply text-3xl font-semibold text-secondary;
+    @apply text-3xl font-semibold text-primary;
   }
   h3 {
     @apply text-2xl font-semibold text-primary;

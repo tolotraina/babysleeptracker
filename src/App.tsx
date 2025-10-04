@@ -14,12 +14,12 @@ const App: React.FC = () => {
   }, [dispatch]);
 
   return (
-    <div className="App font-montserrat">
-      <Navigation />
-      <div className="flex items-center mt-10">
+    <div className="App font-montserrat max-w-6xl mx-auto">
+      <header className="flex items-center mt-10 mb-10">
         <img src="/logo.png" alt="Baby Sleep Tracker Logo" className="w-24" />
         <h1 className="">Baby Sleep Tracker</h1>
-      </div>
+      </header>
+      <Navigation />
       <Routes>
         <Route path="/" element={<SleepList />} />
         <Route path="/add-sleep" element={<SleepAdd />} />
