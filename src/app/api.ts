@@ -51,4 +51,13 @@ export const sleepApi = {
     const responsejson = await response.json();
     return responsejson.data;
   },
+  deleteEntry: async (id: number): Promise<void> => {
+    const api_url = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+    const response = await fetch(`${api_url}/sleep-entries/${id}`, {
+      method: "DELETE",
+    });
+    if (!response.ok) {
+      throw new Error("Failed to delete sleep entry");
+    }
+  },
 };

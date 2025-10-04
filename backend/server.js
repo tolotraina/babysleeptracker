@@ -81,6 +81,22 @@ app.post("/api/sleep-entries/:id", async (req, res) => {
   }
 });
 
+app.delete("/api/sleep-entries/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const [result] = await pool.query(
+      "DELETE FROM sleep_entries WHERE id = ?",
+      [id]
+    );
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ success: false, error: "Entry not found" });
+    }
+    res.json({ success: true });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 // Example route to test DB connection
 app.get("/api/test", async (req, res) => {
   try {

@@ -31,6 +31,12 @@ export const sleepSlice = createSlice({
       if (index !== -1) {
         state.entries[index] = action.payload;
       }
+    },
+    deleteEntry: (state: SleepState, action: PayloadAction<number>) => {
+      state.entries = state.entries.filter(entry => parseInt(entry.id) !== action.payload);
+      if (state.entries.length === 0) {
+        state.status = 'idle';
+      }
     }
   },
   extraReducers: (builder) => {
