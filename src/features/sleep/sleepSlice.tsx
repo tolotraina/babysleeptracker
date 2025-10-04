@@ -25,6 +25,12 @@ export const sleepSlice = createSlice({
   reducers: {
     addEntry: (state: SleepState, action: PayloadAction<SleepEntry>) => {
       state.entries.push(action.payload);
+    },
+    editEntry: (state: SleepState, action: PayloadAction<SleepEntry>) => {
+      const index = state.entries.findIndex(entry => parseInt(entry.id) === parseInt(action.payload.id));
+      if (index !== -1) {
+        state.entries[index] = action.payload;
+      }
     }
   },
   extraReducers: (builder) => {

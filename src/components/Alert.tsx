@@ -17,12 +17,12 @@ export const Alert: React.FC<AlertProps> = ({ type, message, className }) => {
 
   return (<>
     {display && <div
-      className={`border-r-4 pt-6 pb-4 pl-4 pr-8 mb-4 fixed right-5 top-2 ${typeStyles[type]} ${className}`}
+      className={`border-r-4 py-4 pl-4 pr-8 mb-4 fixed right-5 top-2 ${typeStyles[type]} ${className}`}
       role="alert"
     >
       <button
         type="button"
-        className="absolute top-2 right-0 bottom-0 text-2xl px-2"
+        className="absolute top-0 right-0 bottom-0 text-2xl px-2"
         onClick={() => {
           setDisplay(false);
         }}
