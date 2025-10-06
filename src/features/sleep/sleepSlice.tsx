@@ -2,6 +2,7 @@ import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import { type SleepEntry, type SleepState } from "./sleepDatas";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { sleepApi } from "./../../app/api";
+import { createSelector } from 'reselect';
 
 export const fetchEntries = createAsyncThunk(
   'sleep/fetchEntries',
@@ -58,3 +59,21 @@ export const sleepSlice = createSlice({
 });
 
 export default sleepSlice.reducer;
+
+const sleepEntries = (state: SleepState): SleepEntry[] => state.sleep.entries;
+
+export const eventsSelector = createSelector(
+  [sleepEntries],
+  (entries: SleepEntry[]) => {
+    if (entries) {
+      const result = entries.map((entry: SleepEntry) => ({
+        title: `(${entry.type}) - ${entry.note || 'No note'}`,
+        start: new Date(entry.start_time),
+        end: new Date(entry.end_time),
+      }));
+      return result;
+    }else{
+      return [];
+    }
+  }
+);
