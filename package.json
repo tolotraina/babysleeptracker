@@ -10,11 +10,18 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^7.1.0",
+    "@fortawesome/free-brands-svg-icons": "^7.1.0",
+    "@fortawesome/free-regular-svg-icons": "^7.1.0",
+    "@fortawesome/free-solid-svg-icons": "^7.1.0",
+    "@fortawesome/react-fontawesome": "^3.1.0",
     "@reduxjs/toolkit": "^2.8.2",
     "date-fns": "^4.1.0",
     "dlx": "^0.2.1",
     "nanoid": "^5.1.5",
     "react": "^19.1.1",
+    "react-big-calendar": "^1.19.4",
+    "react-datepicker": "^8.7.0",
     "react-dom": "^19.1.1",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.9.1"

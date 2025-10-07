@@ -2,29 +2,33 @@
 @theme {
   --font-montserrat: "Montserrat", "sans-serif";
   --default-font-family: var(--font-montserrat);
-  --color-primary: #0093f5;
-  --color-secondary: #ff41ac;
+  --color-primary: #3184b6;
+  --color-secondary: #0093f5;
   --color-accent: #ed4efb;
   --color-background: #f0f0f0;
+  --color-night: #1e3a8a;
+  --color-nap: #fff205;
+  --default-transition-duration: 300ms;
+  --default-transition-easing: ease-in-out;
 }
 
 @layer base {
   h1 {
-    @apply text-4xl font-black text-primary;
+    @apply text-3xl mt-4 mb-2 font-black text-primary;
   }
   h2 {
-    @apply text-3xl font-semibold text-secondary;
+    @apply text-2xl mt-4 mb-2 font-semibold text-primary;
   }
   h3 {
-    @apply text-2xl font-semibold text-primary;
+    @apply text-lg mt-4 mb-2 font-semibold text-primary;
   }
   h4 {
-    @apply text-xl font-medium text-primary;
+    @apply text-lg mt-4 mb-2 font-medium text-primary;
   }
   h5 {
-    @apply text-lg font-medium text-primary;
+    @apply text-lg mt-4 mb-2 font-medium text-primary;
   }
   h6 {
-    @apply text-base font-medium text-primary;
+    @apply text-base mt-4 mb-2 font-medium text-primary;
   }
 }
