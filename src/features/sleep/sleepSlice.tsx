@@ -2,13 +2,14 @@ import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import { type SleepEntry, type SleepState } from "./sleepDatas";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { sleepApi } from "./../../app/api";
+import { createSelector } from 'reselect';
+import type { RootState } from "../../app/store";
 
 export const fetchEntries = createAsyncThunk(
   'sleep/fetchEntries',
   async (_, { rejectWithValue }) => {
     try {
       const entries = await sleepApi.getEntries();
-      console.log("Fetched sleep entries:", entries);
       return entries;
     } catch (error: any) {
       return rejectWithValue(error.response?.data?.error || 'Failed to fetch entries');
@@ -25,10 +26,19 @@ export const sleepSlice = createSlice({
   } as SleepState,
   reducers: {
     addEntry: (state: SleepState, action: PayloadAction<SleepEntry>) => {
-      console.log("Adding sleep entry:", action.payload);
-      action.payload.id = selectNextId(state);
       state.entries.push(action.payload);
-      console.log("Current sleep entries:", state.entries);
+    },
+    editEntry: (state: SleepState, action: PayloadAction<SleepEntry>) => {
+      const index = state.entries.findIndex(entry => parseInt(entry.id) === parseInt(action.payload.id));
+      if (index !== -1) {
+        state.entries[index] = action.payload;
+      }
+    },
+    deleteEntry: (state: SleepState, action: PayloadAction<number>) => {
+      state.entries = state.entries.filter(entry => parseInt(entry.id) !== action.payload);
+      if (state.entries.length === 0) {
+        state.status = 'idle';
+      }
     }
   },
   extraReducers: (builder) => {
@@ -49,13 +59,22 @@ export const sleepSlice = createSlice({
   },
 });
 
-const selectNextId = (state: SleepState) => {
-  if (!state.entries || state.entries.length === 0) return '1';
-  const max = state.entries.reduce((m, e) => {
-    const n = parseInt(e.id as string, 10);
-    return Number.isFinite(n) ? Math.max(m, n) : m;
-  }, 0);
-  return String(max + 1);
-};
-
 export default sleepSlice.reducer;
+
+const sleepEntries = (state: RootState): SleepEntry[] => state.sleep.entries;
+
+export const eventsSelector = createSelector(
+  [sleepEntries],
+  (entries: SleepEntry[]) => {
+    if (entries) {
+      const result = entries.map((entry: SleepEntry) => ({
+        title: `(${entry.type}) - ${entry.note || 'No note'}`,
+        start: new Date(entry.start_time),
+        end: new Date(entry.end_time),
+      }));
+      return result;
+    }else{
+      return [];
+    }
+  }
+);
