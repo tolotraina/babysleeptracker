@@ -5,6 +5,14 @@ export const formatDisplayDateTime = (isoString: string): string => {
   return format(parseISO(isoString), 'dd / MM / yyyy \'at\' HH:mm');
 };
 
+export const formatDisplayDate = (isoString: string): string => {
+  return format(parseISO(isoString), 'dd / MM / yyyy');
+};
+
+export const formatDisplayTime = (isoString: string): string => {
+  return format(parseISO(isoString), 'HH:mm');
+};
+
 export const formatDuration = (startIso: string, endIso: string): string => {
   const start = parseISO(startIso);
   const end = parseISO(endIso);

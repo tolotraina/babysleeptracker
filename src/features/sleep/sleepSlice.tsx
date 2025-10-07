@@ -3,6 +3,7 @@ import { type SleepEntry, type SleepState } from "./sleepDatas";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { sleepApi } from "./../../app/api";
 import { createSelector } from 'reselect';
+import type { RootState } from "../../app/store";
 
 export const fetchEntries = createAsyncThunk(
   'sleep/fetchEntries',
@@ -60,7 +61,7 @@ export const sleepSlice = createSlice({
 
 export default sleepSlice.reducer;
 
-const sleepEntries = (state: SleepState): SleepEntry[] => state.sleep.entries;
+const sleepEntries = (state: RootState): SleepEntry[] => state.sleep.entries;
 
 export const eventsSelector = createSelector(
   [sleepEntries],

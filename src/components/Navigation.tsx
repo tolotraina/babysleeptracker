@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 const Navigation = () => {
   return (
-    <nav className="bg-blue-600 p-4">
+    <nav className="bg-primary p-4">
       <ul className="flex space-x-6">
         <li>
           <NavLink

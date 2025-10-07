@@ -139,7 +139,7 @@ const FormEdition: React.FC<FormEditionProps> = ({mode, initialData}) => {
             type="button"
             onClick={() => setType(type === "nap" ? "night" : "nap")}
             className={`relative w-14 h-7 rounded-full transition-colors duration-200 cursor-pointer ${
-              type === "nap" ? "bg-yellow-400" : "bg-blue-900"
+              type === "nap" ? "bg-nap" : "bg-night"
             }`}
           >
             <span
@@ -167,7 +167,7 @@ const FormEdition: React.FC<FormEditionProps> = ({mode, initialData}) => {
 
       <button
         type="submit"
-        className="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+        className="w-full bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark transition"
       >
         {mode === "add" ? "Add Entry" : "Update Entry"}
       </button>

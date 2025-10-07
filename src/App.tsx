@@ -18,7 +18,7 @@ const App: React.FC = () => {
     <div className="App font-montserrat max-w-6xl mx-auto">
       <header className="flex items-center mt-10 mb-10">
         <img src="/logo.png" alt="Baby Sleep Tracker Logo" className="w-24" />
-        <h1 className="">Baby Sleep Tracker</h1>
+        <h1 className="text-primary">Baby Sleep Tracker</h1>
       </header>
       <Navigation />
       <Routes>

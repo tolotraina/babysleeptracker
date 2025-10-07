@@ -16,7 +16,7 @@ const Confirm: React.FC<ConfirmProps> = ({ message, onConfirm, onCancel, open })
                 <div className="mb-4 text-center text-gray-800">{message}</div>
                 <div className="flex justify-center space-x-3">
                     <button
-                        className="px-4 py-2 bg-primary text-white rounded hover:bg-blue-700 cursor-pointer"
+                        className="px-4 py-2 bg-primary text-white rounded hover:bg-primary cursor-pointer"
                         onClick={onConfirm}
                     >
                         Confirm

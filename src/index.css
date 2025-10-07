@@ -2,10 +2,14 @@
 @theme {
   --font-montserrat: "Montserrat", "sans-serif";
   --default-font-family: var(--font-montserrat);
-  --color-primary: #0093f5;
-  --color-secondary: #ff41ac;
+  --color-primary: #3184b6;
+  --color-secondary: #0093f5;
   --color-accent: #ed4efb;
   --color-background: #f0f0f0;
+  --color-night: #1e3a8a;
+  --color-nap: #fff205;
+  --default-transition-duration: 300ms;
+  --default-transition-easing: ease-in-out;
 }
 
 @layer base {
