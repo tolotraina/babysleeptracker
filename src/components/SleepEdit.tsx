@@ -1,17 +1,16 @@
-import { useState } from "react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { sleepApi } from "../app/api";
 import { useParams } from "react-router-dom";
 import { type SleepEntry } from "../features/sleep/sleepDatas";
 import FormEdition from "./FormEdition";
 
-const SleepEdit = () => {
+const SleepEdit: React.FC = () => {
   const { id } = useParams();
   const idInt = Number(id);
 
   const [entry, setEntry] = useState<SleepEntry>();
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (Number.isInteger(idInt)) {
       sleepApi
         .getEntry(idInt)
